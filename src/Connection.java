@@ -11,6 +11,7 @@ public class Connection implements Runnable
     static InputStream in;
     static OutputStream out;
     static byte[] buffer = new byte[1000];
+    static String translatedMessage = "";
 
 
     public void run()
@@ -64,13 +65,17 @@ public class Connection implements Runnable
 
     private static void readMessage(byte[] message)
     {
+        String tempMessage = new String(message);
+        translatedMessage = tempMessage.substring(tempMessage.indexOf(':') + 1, tempMessage.indexOf(';'));
         System.out.println(new String(message));
+
     }
 
     public static void sendMessage(String message) throws Exception
     {
         System.out.println("jsalkdjl");
-        buffer = message.getBytes();
+        String translated = ":" + message + ";";
+        buffer = translated.getBytes();
         out.write(buffer);
         buffer = new byte[1000];
     }

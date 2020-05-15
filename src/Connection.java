@@ -33,11 +33,15 @@ public class Connection implements Runnable
             {
                 System.out.println("retrying");
                 client = new Socket(ipAddress, port);
+                System.out.println(MainClass.seek.getState());
+                MainClass.seek.interrupt();
+                System.out.println(MainClass.seek.getState());
                 in = client.getInputStream();
                 out = client.getOutputStream();
                 System.out.println("now connected");
             }catch (Exception e)
             {
+                e.printStackTrace();
                 System.out.println("Timout");
             }
         }

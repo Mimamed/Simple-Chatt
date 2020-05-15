@@ -28,8 +28,8 @@ public class MainClass
         win.add(pan);
         pan.add(but);
         but.addActionListener(new SendAction());
-        listen.start();
         seek.start();
+        listen.start();
 
     }
 

@@ -51,7 +51,6 @@ public class Connection implements Runnable
 
             while (MainClass.connected && in.read(buffer) != -1)
             {
-                System.out.println("han skicakr");
                 readMessage(buffer);
                 buffer = new byte[size];
             }
@@ -62,6 +61,7 @@ public class Connection implements Runnable
     private static void readMessage(byte[] message)
     {
         String tempMessage = new String(message);
+        System.out.println("han skicakr: " + tempMessage);
         translatedMessage = tempMessage.substring(tempMessage.indexOf(':') + 1, tempMessage.indexOf(';'));
         MainClass.chatlog.append("Him: " + translatedMessage + "\n");
         System.out.println(translatedMessage);

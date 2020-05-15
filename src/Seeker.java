@@ -1,9 +1,11 @@
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Seeker implements Runnable
 {
 
     static ServerSocket server;
+    static Socket tempClient;
 
     public void run()
     {
@@ -25,7 +27,9 @@ public class Seeker implements Runnable
             {
                 System.out.println("server");
                 System.out.println(MainClass.seek.getState());
-                MainClass.connection.setup(server.accept());
+                tempClient = server.accept();
+                MainClass.listen.interrupt();
+                MainClass.connection.setup(tempClient, true);
             }catch (Exception e)
             {
                 e.printStackTrace();

@@ -8,7 +8,7 @@ public class Connection implements Runnable
 
 
     static String ipAddress = "95.109.71.23";
-    static int port = 7778;
+    static int port = 7779;
     static Socket client;
     static InputStream in;
     static OutputStream out;

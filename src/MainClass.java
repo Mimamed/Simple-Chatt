@@ -11,8 +11,9 @@ public class MainClass
     static JPanel pan = new JPanel();
     static JButton but = new JButton("send");
     static Connection connection = new Connection();
+    static Seeker seeker = new Seeker();
     static boolean connected = false;
-    static Thread listen = new Thread(connection), seek = new Thread();
+    static Thread listen = new Thread(connection), seek = new Thread(seeker);
 
     public static void main (String[] args)
     {

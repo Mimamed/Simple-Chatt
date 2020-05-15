@@ -23,6 +23,7 @@ public class Seeker implements Runnable
         {
             try
             {
+                System.out.println("server");
                 MainClass.connection.client = server.accept();
                 MainClass.begin();
             }catch (Exception e)

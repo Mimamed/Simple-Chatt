@@ -14,13 +14,22 @@ public class Seeker implements Runnable
     {
         try
         {
-            System.out.println(MainClass.seek.getState());
-            server = new ServerSocket(7770);
-            MainClass.connection.client = server.accept();
-            MainClass.begin();
+            server = new ServerSocket(7778);
         }catch (Exception e)
         {
             e.printStackTrace();
+        }
+        while (!MainClass.connected)
+        {
+            try
+            {
+                System.out.println("server");
+                MainClass.connection.client = server.accept();
+                MainClass.begin();
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

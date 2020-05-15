@@ -67,7 +67,7 @@ public class Connection implements Runnable
     {
         String tempMessage = new String(message);
         translatedMessage = tempMessage.substring(tempMessage.indexOf(':') + 1, tempMessage.indexOf(';'));
-        System.out.println(new String(message));
+        System.out.println(translatedMessage);
 
     }
 

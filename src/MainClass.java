@@ -67,7 +67,6 @@ public class MainClass
                 {
                     chatlog.append("you: " + text.getText() + "\n");
                     text.setEditable(false);
-                    text.setText("Sending...");
                     connection.sendMessage(text.getText());
                     text.setText("");
                     text.setEditable(true);

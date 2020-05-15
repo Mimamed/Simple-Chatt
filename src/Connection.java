@@ -73,8 +73,10 @@ public class Connection implements Runnable
         System.out.println("jsalkdjl");
         String translated = ":" + message + ";";
         System.out.println("Sent: " + translated);
+        buffer = new byte[size];
         buffer = translated.getBytes();
         out.write(buffer);
+        System.out.println("varifiera: " + new String(buffer));
         buffer = new byte[size];
     }
 

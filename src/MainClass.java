@@ -8,7 +8,7 @@ public class MainClass
 {
 
     static String ipAddress = "95.109.71.23";
-    static int port2 = 7777, port1 = 7778, noPort = 7779;
+    static int port2 = 7778, port1 = 7777, noPort = 7779;
     static JFrame win = new JFrame("Title");
     static JPanel pan = new JPanel();
     static JButton but = new JButton("send");
@@ -67,7 +67,6 @@ public class MainClass
                 {
                     chatlog.append("you: " + text.getText() + "\n");
                     text.setEditable(false);
-                    text.setText("Sending...");
                     connection.sendMessage(text.getText());
                     text.setText("");
                     text.setEditable(true);

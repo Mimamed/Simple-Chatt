@@ -53,6 +53,7 @@ public class MainClass
         System.out.println("Connected");
         connected = true;
         but.setEnabled(true);
+        text.setEditable(true);
     }
 
     static class SendAction implements ActionListener
@@ -62,7 +63,19 @@ public class MainClass
         {
             try
             {
-                connection.sendMessage("test");
+                if (text.getText().indexOf(':') == -1 && text.getText().indexOf(';') == -1)
+                {
+                    chatlog.append("you: " + text.getText() + "\n");
+                    text.setEditable(false);
+                    text.setText("Sending...");
+                    connection.sendMessage(text.getText());
+                    text.setText("");
+                    text.setEditable(true);
+                }
+                else
+                {
+                    text.setText("No \":\" or \";\" characters");
+                }
             } catch (Exception e)
             {
                 e.printStackTrace();

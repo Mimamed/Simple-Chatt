@@ -61,6 +61,7 @@ public class Connection implements Runnable
     {
         String tempMessage = new String(message);
         translatedMessage = tempMessage.substring(tempMessage.indexOf(':') + 1, tempMessage.indexOf(';'));
+        MainClass.chatlog.append("Him: " + translatedMessage + "\n");
         System.out.println(translatedMessage);
 
     }

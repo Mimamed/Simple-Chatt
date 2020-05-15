@@ -10,7 +10,7 @@ public class Connection implements Runnable
     static Socket client;
     static InputStream in;
     static OutputStream out;
-    static int size = 1024;
+    static int size = 500;
     static byte[] buffer = new byte[size];
     static String translatedMessage = "";
 
@@ -31,6 +31,7 @@ public class Connection implements Runnable
             }catch (Exception e)
             {
                 System.out.println("Timout");
+                e.printStackTrace();
             }
         }
     }

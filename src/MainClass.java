@@ -49,7 +49,13 @@ public class MainClass
 
         public void actionPerformed(ActionEvent actionEvent)
         {
-
+            try
+            {
+                connection.sendMessage("test");
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 

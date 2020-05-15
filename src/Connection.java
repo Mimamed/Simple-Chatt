@@ -77,7 +77,7 @@ public class Connection implements Runnable
         buffer = new byte[size];
         buffer = translated.getBytes();
         out.write(buffer);
-        System.out.println("varifiera: " + new String(buffer));
+        System.out.println("Size = " + buffer.length + " varifiera: " + new String(buffer));
         buffer = new byte[size];
     }
 

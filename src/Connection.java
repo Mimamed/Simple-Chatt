@@ -21,12 +21,6 @@ public class Connection implements Runnable
 
     private void StartUpConnection()
     {
-        try
-        {
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
         while (client == null)
         {
             try

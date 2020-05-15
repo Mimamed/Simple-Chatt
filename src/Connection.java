@@ -45,18 +45,21 @@ public class Connection implements Runnable
         {
             MainClass.seek.interrupt();
         }
-        MainClass.connection.client = client;
-        in = client.getInputStream();
-        out = client.getOutputStream();
-        System.out.println("now connected");
-        MainClass.begin();
-
-        while (MainClass.connected && in.read(buffer) != -1)
+        if (MainClass.connected != true)
         {
-            readMessage(buffer);
-            buffer = new byte[1000];
+            MainClass.connection.client = client;
+            in = client.getInputStream();
+            out = client.getOutputStream();
+            System.out.println("now connected");
+            MainClass.begin();
+
+            while (MainClass.connected && in.read(buffer) != -1)
+            {
+                readMessage(buffer);
+                buffer = new byte[1000];
+            }
+            System.out.println("quit");
         }
-        System.out.println("quit");
     }
 
     private static void readMessage(byte[] message)

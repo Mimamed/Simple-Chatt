@@ -7,8 +7,6 @@ public class Connection implements Runnable
 {
 
 
-    static String ipAddress = "95.109.71.23";
-    static int port = 7779;
     static Socket client;
     static InputStream in;
     static OutputStream out;
@@ -32,19 +30,22 @@ public class Connection implements Runnable
             try
             {
                 System.out.println("retrying");
-                client = new Socket(ipAddress, port);
-                System.out.println(MainClass.seek.getState());
+                setup(new Socket(MainClass.ipAddress, MainClass.port2));
                 MainClass.seek.interrupt();
-                System.out.println(MainClass.seek.getState());
-                in = client.getInputStream();
-                out = client.getOutputStream();
-                System.out.println("now connected");
             }catch (Exception e)
             {
-                e.printStackTrace();
                 System.out.println("Timout");
             }
         }
+    }
+
+    public static void setup(Socket client) throws Exception
+    {
+        MainClass.connection.client = client;
+        in = client.getInputStream();
+        out = client.getOutputStream();
+        System.out.println("now connected");
+        MainClass.begin();
     }
 
     public static void sendMessage(String message) throws Exception

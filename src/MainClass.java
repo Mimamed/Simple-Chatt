@@ -7,6 +7,8 @@ import java.net.Socket;
 public class MainClass
 {
 
+    static String ipAddress = "95.109.71.23";
+    static int port1 = 7777, port2 = 7778, noPort = 7779;
     static JFrame win = new JFrame("Title");
     static JPanel pan = new JPanel();
     static JButton but = new JButton("send");
@@ -29,6 +31,7 @@ public class MainClass
         win.add(pan);
         pan.add(but);
         but.addActionListener(new SendAction());
+        but.setEnabled(false);
         seek.start();
         listen.start();
 
@@ -38,6 +41,7 @@ public class MainClass
     {
         System.out.println("Connected");
         connected = true;
+        but.setEnabled(true);
     }
 
     static class SendAction implements ActionListener

@@ -14,7 +14,7 @@ public class Seeker implements Runnable
     {
         try
         {
-            server = new ServerSocket(7778);
+            server = new ServerSocket(MainClass.noPort);
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -24,8 +24,8 @@ public class Seeker implements Runnable
             try
             {
                 System.out.println("server");
-                MainClass.connection.client = server.accept();
-                MainClass.begin();
+                System.out.println(MainClass.seek.getState());
+                MainClass.connection.setup(server.accept());
             }catch (Exception e)
             {
                 e.printStackTrace();

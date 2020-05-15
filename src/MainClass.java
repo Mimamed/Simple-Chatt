@@ -24,16 +24,19 @@ public class MainClass
         win.setVisible(true);
         win.setSize(500, 500);
         win.setLocationRelativeTo(null);
+        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         win.add(pan);
         pan.add(but);
         but.addActionListener(new SendAction());
         listen.start();
+        seek.start();
 
     }
 
     public static void begin()
     {
-
+        System.out.println("Connected");
+        connected = true;
     }
 
     static class SendAction implements ActionListener

@@ -21,6 +21,12 @@ public class Connection implements Runnable
 
     private void StartUpConnection()
     {
+        try
+        {
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         while (client == null)
         {
             try
@@ -32,7 +38,7 @@ public class Connection implements Runnable
                 System.out.println("now connected");
             }catch (Exception e)
             {
-                e.printStackTrace();
+                System.out.println("Timout");
             }
         }
     }

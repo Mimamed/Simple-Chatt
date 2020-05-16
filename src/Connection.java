@@ -10,7 +10,7 @@ public class Connection implements Runnable
     static Socket client;
     static InputStream in;
     static OutputStream out;
-    static int size = 1024;
+    static int size = 500;
     static byte[] buffer = new byte[size];
     static String translatedMessage = "";
 
@@ -49,8 +49,9 @@ public class Connection implements Runnable
             System.out.println("now connected");
             MainClass.begin();
 
-            while (MainClass.connected && in.read(buffer) != -1)
+            while (MainClass.connected)
             {
+                in.read(buffer);
                 readMessage(buffer);
                 buffer = new byte[size];
             }
@@ -76,6 +77,7 @@ public class Connection implements Runnable
         buffer = new byte[size];
         buffer = translated.getBytes();
         out.write(buffer);
+        out.flush();
         System.out.println("Size = " + buffer.length + " varifiera: " + new String(buffer));
         buffer = new byte[size];
     }

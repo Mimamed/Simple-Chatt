@@ -77,9 +77,17 @@ public class MainClass
                 }
                 else if (connected == false)
                 {
+                    but.setEnabled(false);
+                    but.setText("Sänd");
                     chatlog.setText("");
+                    connection.client.close();
+                    seeker.server.close();
                     seek.interrupt();
                     listen.interrupt();
+                    seeker = new Seeker();
+                    connection = new Connection();
+                    seek = new Thread(seeker);
+                    listen = new Thread(connection);
                     search();
                 }
                 else

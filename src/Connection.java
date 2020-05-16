@@ -54,9 +54,9 @@ public class Connection implements Runnable
             {
                 buffer = new byte[size];
                 in.read(buffer);
-                System.out.println("2..han skicakr: " + new String(buffer));
-                //String tempMessage = new String(buffer);
-                //readMessage(buffer);
+                String tempMessage = new String(buffer);
+                System.out.println("2..han skicakr: " + tempMessage);
+                readMessage(buffer);
             }
             System.out.println("quit");
         }
@@ -73,12 +73,11 @@ public class Connection implements Runnable
 
     public static void sendMessage(String message) throws Exception
     {
-        //String translated = ":" + message + ";";
-        //buffer = translated.getBytes();
-        out.write(":noob;".getBytes());
-        out.flush();/*
-        System.out.println("Size = " + buffer.length + " varifiera: " + new String(buffer));
-        buffer = new byte[size];*/
+        String translated = ":" + message + ";";
+        duffer = translated.getBytes();
+        out.write(duffer);
+        out.flush();
+        duffer = new byte[size];
     }
 
 }

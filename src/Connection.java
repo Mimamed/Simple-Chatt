@@ -53,12 +53,21 @@ public class Connection implements Runnable
             while (MainClass.connected)
             {
                 buffer = new byte[size];
-                in.read(buffer);
+                try
+                {
+                    in.read(buffer);
+                }catch (Exception e)
+                {
+                    break;
+                }
                 String tempMessage = new String(buffer);
                 System.out.println("2..han skicakr: " + tempMessage);
                 readMessage(buffer);
             }
             System.out.println("quit");
+            MainClass.connected = false;
+            MainClass.chatlog.append("He left\n");
+            MainClass.but.setText("Search");
         }
     }
 

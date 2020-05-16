@@ -43,9 +43,13 @@ public class MainClass
         but.setMargin(new Insets(0,0,0,0));
         but.addActionListener(new SendAction());
         but.setEnabled(false);
+        search();
+    }
+
+    public static void search()
+    {
         seek.start();
         listen.start();
-
     }
 
     public static void begin()
@@ -63,13 +67,20 @@ public class MainClass
         {
             try
             {
-                if (text.getText().indexOf(':') == -1 && text.getText().indexOf(';') == -1)
+                if (text.getText().indexOf(':') == -1 && text.getText().indexOf(';') == -1 && connected)
                 {
                     chatlog.append("you: " + text.getText() + "\n");
                     text.setEditable(false);
                     connection.sendMessage(text.getText());
                     text.setText("");
                     text.setEditable(true);
+                }
+                else if (connected == false)
+                {
+                    chatlog.setText("");
+                    seek.interrupt();
+                    listen.interrupt();
+                    search();
                 }
                 else
                 {

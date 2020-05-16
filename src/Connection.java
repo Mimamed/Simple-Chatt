@@ -11,7 +11,7 @@ public class Connection implements Runnable
     static InputStream in;
     static OutputStream out;
     static int size = 500;
-    static byte[] buffer = new byte[size];
+    static byte[] buffer = new byte[size], duffer = new byte[size];
     static String translatedMessage = "";
 
 
@@ -31,6 +31,7 @@ public class Connection implements Runnable
             }catch (Exception e)
             {
                 System.out.println("Timout");
+                e.printStackTrace();
             }
         }
     }
@@ -51,9 +52,11 @@ public class Connection implements Runnable
 
             while (MainClass.connected)
             {
-                in.read(buffer);
-                readMessage(buffer);
                 buffer = new byte[size];
+                in.read(buffer);
+                System.out.println("2..han skicakr: " + new String(buffer));
+                //String tempMessage = new String(buffer);
+                //readMessage(buffer);
             }
             System.out.println("quit");
         }
@@ -62,7 +65,6 @@ public class Connection implements Runnable
     private static void readMessage(byte[] message)
     {
         String tempMessage = new String(message);
-        System.out.println("han skicakr: " + tempMessage);
         translatedMessage = tempMessage.substring(tempMessage.indexOf(':') + 1, tempMessage.indexOf(';'));
         MainClass.chatlog.append("Him: " + translatedMessage + "\n");
         System.out.println(translatedMessage);
@@ -71,15 +73,12 @@ public class Connection implements Runnable
 
     public static void sendMessage(String message) throws Exception
     {
-        System.out.println("jsalkdjl");
-        String translated = ":" + message + ";";
-        System.out.println("Sent: " + translated);
-        buffer = new byte[size];
-        buffer = translated.getBytes();
-        out.write(buffer);
-        out.flush();
+        //String translated = ":" + message + ";";
+        //buffer = translated.getBytes();
+        out.write(":noob;".getBytes());
+        out.flush();/*
         System.out.println("Size = " + buffer.length + " varifiera: " + new String(buffer));
-        buffer = new byte[size];
+        buffer = new byte[size];*/
     }
 
 }

@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -27,11 +26,10 @@ public class Connection implements Runnable
             try
             {
                 System.out.println("retrying");
-                setup(new Socket(MainClass.ipAddress, MainClass.port2), false);
+                setup(new Socket(MainClass.ipAddress, MainClass.clientPort), false);
             }catch (Exception e)
             {
                 System.out.println("Timout");
-                e.printStackTrace();
             }
         }
     }

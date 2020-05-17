@@ -16,7 +16,7 @@ public class Seeker implements Runnable
     {
         try
         {
-            server = new ServerSocket(MainClass.port1);
+            server = new ServerSocket(MainClass.yourPort);
         }catch (Exception e)
         {
             e.printStackTrace();

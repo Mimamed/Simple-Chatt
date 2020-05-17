@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="test king">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="client.jar">
+      <element id="module-output" name="client" />
+    </root>
+  </artifact>
+</component>
